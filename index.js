@@ -2,7 +2,7 @@ const express    = require("express");
 const nodeMailer  = require("nodemailer");
 const bodyParser  = require("body-Parser");
 const favicon    = require('serve-favicon');
-const port = 3000;
+const port = process.env.PORT || 3000;
         const app = express();
 
         app.use(bodyParser.urlencoded({ extended: true }));
@@ -17,7 +17,7 @@ app.use(favicon(__dirname + '/landscaper/img/favicon.png'));
   const { name, email, message } = req.body;
 
 
-  const transporter = nodemailer.createTransport({
+  const transporter = nodeMailer.createTransport({
     service: 'your-email-service',
     auth: {
       user: 'your-email@example.com',
